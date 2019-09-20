@@ -15,6 +15,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'christoomey/vim-system-copy'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -199,10 +200,11 @@ set splitbelow
 set cmdheight=2
 " set signcolumn=yes
 set scrolloff=3
+set termguicolors
 
 
 colorscheme gruvbox
-set background=dark
+set background=light
 " let g:gruvbox_contrast_dark="soft"
 let g:gruvbox_contrast_light="hard"
 

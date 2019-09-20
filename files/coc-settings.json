@@ -1,8 +1,10 @@
 {
   "solargraph.diagnostics": true,
+  "solargraph.completion": true,
+  "solargraph.formatting": true,
   "diagnostic-languageserver.filetypes": {
     "php": "phpcs"
   },
-  "coc.preferences.formatOnSaveFiletypes": ["javascript"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "ruby"],
   "prettier.eslintIntegration": true
 }

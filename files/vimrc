@@ -4,6 +4,7 @@ setglobal pastetoggle=<F2>
 set ttyfast
 set lazyredraw
 
+
 let g:python_host_skip_check=1
 let g:loaded_python3_provider=1
 
@@ -15,6 +16,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'lifepillar/vim-solarized8'
 Plug 'christoomey/vim-system-copy'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-sensible'
@@ -202,11 +204,11 @@ set cmdheight=2
 set scrolloff=3
 set termguicolors
 
+set background=light
+let g:gruvbox_contrast_light="hard"
+" let g:gruvbox_contrast_dark="soft"
 
 colorscheme gruvbox
-set background=light
-" let g:gruvbox_contrast_dark="soft"
-let g:gruvbox_contrast_light="hard"
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -283,7 +285,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>o :GFiles .<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>ff :Files<CR>
-nnoremap <leader>fa :Ag<CR>
+nnoremap <leader>fa :Rg<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '\.retry$']
 

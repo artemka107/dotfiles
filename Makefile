@@ -1,8 +1,19 @@
-ANSIBLE_PREFIX := docker run -v $(HOME):/host/home -v $(CURDIR):/dotfiles -w /dotfiles williamyeh/ansible:ubuntu18.04 ansible-playbook -i local -vv
+# ANSIBLE_PREFIX := docker run -v $(HOME):/host/home -v $(CURDIR):/dotfiles -w /dotfiles williamyeh/ansible:ubuntu18.04 ansible-playbook -i local -vv
+#
+ANSIBLE_PREFIX := ansible-playbook -i local -vv -K
 
 all: nvim-install dotfiles-install
 
 TAGS := all
+
+install-ansible:
+	sudo apt update
+	sudo apt install software-properties-common
+	sudo apt-add-repository --yes --update ppa:ansible/ansible
+	sudo apt install ansible
+
+home-app-install:
+	$(ANSIBLE_PREFIX) home-apps.yml
 
 dotfiles-install:
 	$(ANSIBLE_PREFIX) dotfiles.yml
@@ -12,14 +23,7 @@ nvim-install:
 	ln -s $(PWD)/files/vimrc ~/.config/nvim/init.vim | true
 	ln -s $(PWD)/files/coc-settings.json ~/.config/nvim/coc-settings.json | true
 
-macos-prepare:
-	brew install ripgrep fzf bat htop fd ncdu tldr httpie bash-completion
 
-# docker-build:
-# 	docker build . -t mokevnin/dotfiles
-# docker-push:
-# 	docker push mokevnin/dotfiles
-# docker-bash:
-# 	docker run -it mokevnin/dotfiles bash
+prepare: install-ansible
 
 # .PHONY:

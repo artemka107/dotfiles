@@ -1,9 +1,10 @@
 ---
 
 - hosts: localhost
+  become: yes
   vars:
-    home: /host/home
-    config: "{{ home }}/.bash_profile"
+    home: /home/artem/
+    config: "{{ home }}.bashrc"
 
   tasks:
     - lineinfile: dest="{{ config }}" state=present create=yes

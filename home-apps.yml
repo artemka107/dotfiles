@@ -1,0 +1,54 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+    - name: "Gyazo repo"
+      shell: curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash
+      args:
+        warn: no
+
+    - name: "Install node.js"
+      shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - && sudo apt-get install -y nodejs
+      args:
+        warn: no
+
+    - name: "Add repos"
+      apt_repository:
+        repo: '{{ item }}'
+        update_cache: yes
+      with_items:
+        - ppa:atareao/telegram
+        - ppa:noobslab/themes
+        - ppa:noobslab/icons
+        - ppa:neovim-ppa/stable
+
+    - name: "Install apps"
+      apt:
+        name: '{{ item }}'
+        state: latest
+      with_items:
+        - curl
+        - gnome-tweak-tool
+        - apt-transport-https
+        - gnupg-agent
+        - software-properties-common
+        - telegram
+        - arc-theme
+        - arc-icons
+        - neovim
+        - gyazo
+
+    - name: "Install deb packages"
+      apt:
+        deb: '{{ item }}'
+      with_items:
+        - https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+        - https://go.skype.com/skypeforlinux-64.deb
+        - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        - https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb
+
+
+    - name: "Acestream"
+      snap:
+        name: acestreamplayer

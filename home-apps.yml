@@ -22,6 +22,7 @@
         - ppa:noobslab/themes
         - ppa:noobslab/icons
         - ppa:neovim-ppa/stable
+        - ppa:rael-gc/rvm
 
     - name: "Install apps"
       apt:
@@ -37,7 +38,16 @@
         - arc-theme
         - arc-icons
         - neovim
-        - gyazo
+        - rvm
+        - ruby-full
+        - silversearcher-ag
+        - xsel
+
+    - name: "Gems"
+      gem:
+        name: '{{ item }}'
+      with_items:
+        - solargraph
 
     - name: "Install deb packages"
       apt:
@@ -51,4 +61,6 @@
 
     - name: "Acestream"
       snap:
-        name: acestreamplayer
+        name: '{{ item }}'
+      with_items:
+        - acestreamplayer

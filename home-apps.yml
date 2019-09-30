@@ -5,13 +5,14 @@
   tasks:
     - name: "Gyazo repo"
       shell: curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash
-      args:
-        warn: no
+
+    - name: "Yarn repo"
+      shell: curl -s https://packagecloud.io/install/repositories/gyazo/gyazo-for-linux/script.deb.sh | sudo bash j \
+       echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 
     - name: "Install node.js"
       shell: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - && sudo apt-get install -y nodejs
-      args:
-        warn: no
 
     - name: "Add repos"
       apt_repository:
@@ -48,6 +49,8 @@
         name: '{{ item }}'
       with_items:
         - solargraph
+        - gyazo
+        - yarn
 
     - name: "Install deb packages"
       apt:

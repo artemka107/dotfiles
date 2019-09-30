@@ -3,12 +3,16 @@
 - hosts: localhost
   become: yes
   vars:
-    home: /home/artem/
+    home: "{{ lookup('env','HOME') }}"
     config: "{{ home }}.bashrc"
+    inputrc: "{{ home }}.inputrc"
 
   tasks:
     - lineinfile: dest="{{ config }}" state=present create=yes
         line="set -o vi"
+
+    - lineinfile: dest="{{ inputrc }}" state=present create=yes
+        line="set editing-mode vi"
 
     - lineinfile:
         dest: "{{ config }}"

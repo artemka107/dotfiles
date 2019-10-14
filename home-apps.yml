@@ -43,6 +43,9 @@
         - ruby-full
         - silversearcher-ag
         - xsel
+        - postgresql
+        - postgresql-contrib
+
 
     - name: "Gems"
       gem:

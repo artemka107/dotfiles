@@ -16,6 +16,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'sainnhe/gruvbox-material'
 Plug 'lifepillar/vim-solarized8'
 Plug 'christoomey/vim-system-copy'
 Plug 'morhetz/gruvbox'
@@ -204,12 +205,18 @@ set cmdheight=2
 " set signcolumn=yes
 set scrolloff=3
 set termguicolors
+set background=dark
 
-set background=light
-let g:gruvbox_contrast_light="hard"
-" let g:gruvbox_contrast_dark="soft"
+" For gruvbox Theme
+let g:gruvbox_contrast_light="medium"
+let g:gruvbox_contrast_dark="soft"
+" colorscheme gruvbox
 
-colorscheme gruvbox
+" For gruvbox-material Theme
+let g:gruvbox_material_background = 'soft'
+let g:gruvbox_material_disable_italic_comment = 1
+colorscheme gruvbox-material
+
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -443,7 +450,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " " Show commands
 " nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document
+" Find symbol of current document
 " nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " " Search workspace symbols
 " nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>

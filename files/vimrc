@@ -205,17 +205,17 @@ set cmdheight=2
 " set signcolumn=yes
 set scrolloff=3
 set termguicolors
-set background=dark
+set background=light
 
 " For gruvbox Theme
-let g:gruvbox_contrast_light="medium"
+let g:gruvbox_contrast_light="soft"
 let g:gruvbox_contrast_dark="soft"
-" colorscheme gruvbox
+colorscheme gruvbox
 
 " For gruvbox-material Theme
-let g:gruvbox_material_background = 'soft'
-let g:gruvbox_material_disable_italic_comment = 1
-colorscheme gruvbox-material
+" let g:gruvbox_material_background = 'soft'
+" let g:gruvbox_material_disable_italic_comment = 1
+" colorscheme gruvbox-material
 
 
 " ================ Persistent Undo ==================
